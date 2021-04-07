@@ -1,9 +1,8 @@
 // gcc adjacencymatrix_representation.c -o run
 // ./run n
-
-
 #include <stdio.h>
 #include <stdlib.h>
+#include "matrix_graph.h"
 
 void delete(int***arr,int origin,int destination)
 {
@@ -14,46 +13,6 @@ void insert(int***arr,int origin,int destination)
 {
     (*arr)[origin][destination]=1;
 }
-
-void display(int ***arr,int size)
-{
-    int i,j;
-    for(i=0;i<size;i++)
-        printf("\t%d",i);
-    printf("\n\t");
-    for(i=0;i<size;i++)
-        printf("-\t");
-    printf("\n");
-    for(i=0;i<size;i++){
-        printf("%d|      ",i);
-        for(j=0;j<size;j++){
-            printf("%d\t",(*arr)[i][j]);
-        }
-        printf("\n");
-    }
-}
-
-void createGraph(int ***arr,int noOfVertices)
-{
-    printf("Enter -1 -1 as vertices to quit\n");
-    int origin,destination;
-    while(1){
-        printf("Enter vertices as origin,destination\n");
-        scanf("%d %d",&origin,&destination);
-        if(origin==-1&&destination==-1)
-            return;
-        if(origin<0||destination<0||origin>=noOfVertices||destination>=noOfVertices)
-        {
-            printf("Invalid vertices\n");
-            continue;
-        }
-        (*arr)[origin][destination]=1;
-        
-    }
-}
-
-
-
 int main(int argc,char*argv[])
 {
     int noOfVertices=atoi(argv[1]);
